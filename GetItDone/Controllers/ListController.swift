@@ -52,7 +52,7 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
         
         listData = [
             ToDo(id: 0, title: "First Item", status: false),
-            ToDo(id: 1, title: "Yo Dude", status: false),
+            ToDo(id: 1, title: "Yo Dude", status: true),
             ToDo(id: 2, title: "Third Item", status: false)
         ]
         
