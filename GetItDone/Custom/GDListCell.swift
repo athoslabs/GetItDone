@@ -19,6 +19,8 @@ class GDListCell: UITableViewCell {
         return view
     }()
     
+    let box = GDCheckBox()
+    
     
     var toDo: ToDo? {
         didSet {
@@ -46,11 +48,18 @@ class GDListCell: UITableViewCell {
         view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3).isActive = true
         view.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         
-        view.addSubview(textField)
+        addSubview(textField)
         textField.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         textField.topAnchor.constraint(equalTo: topAnchor, constant: 3).isActive = true
         textField.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -3).isActive = true
         textField.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        
+        addSubview(box)
+        box.rightAnchor.constraint(equalTo: rightAnchor, constant: -14).isActive = true
+        box.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        box.widthAnchor.constraint(equalToConstant: 22).isActive = true
+        box.heightAnchor.constraint(equalTo: box.widthAnchor).isActive = true
+        
 
         
     }

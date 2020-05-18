@@ -28,6 +28,7 @@
 		61E92D782472D48B0021D609 /* GDTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E92D772472D48B0021D609 /* GDTableView.swift */; };
 		61E92D7C2472E8520021D609 /* GDListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E92D7B2472E8520021D609 /* GDListCell.swift */; };
 		61E92D7F2472EBA70021D609 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E92D7E2472EBA70021D609 /* ToDo.swift */; };
+		61E92D81247302660021D609 /* GDCheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E92D80247302660021D609 /* GDCheckBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		61E92D772472D48B0021D609 /* GDTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDTableView.swift; sourceTree = "<group>"; };
 		61E92D7B2472E8520021D609 /* GDListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDListCell.swift; sourceTree = "<group>"; };
 		61E92D7E2472EBA70021D609 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		61E92D80247302660021D609 /* GDCheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GDCheckBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 				615C8F57246F114300503A10 /* GDTextField.swift */,
 				61E92D772472D48B0021D609 /* GDTableView.swift */,
 				61E92D7B2472E8520021D609 /* GDListCell.swift */,
+				61E92D80247302660021D609 /* GDCheckBox.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6196B987246DE5B60008BD28 /* GDButton.swift in Sources */,
+				61E92D81247302660021D609 /* GDCheckBox.swift in Sources */,
 				61DF84532469DC640097D8FD /* WelcomeController.swift in Sources */,
 				61E92D7C2472E8520021D609 /* GDListCell.swift in Sources */,
 				615C8F4D246EC78F00503A10 /* ListController.swift in Sources */,
