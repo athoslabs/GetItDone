@@ -19,10 +19,11 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
     
     let header = GDHeaderView(title: "Stuff to get done", subtitle: "4 Left")
     let popup = GDNewItemPopup()
+    let tbInset: CGFloat = 16
     
-    let bg: UIView = {
+    lazy var bg: UIView = {
        let view = GDGradient()
-        view.layer.cornerRadius = 24
+        view.layer.cornerRadius = tbInset
         return view
     }()
     
@@ -43,6 +44,7 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
         self.keyboardHeight = keyboardSize.height
         
     }
+    
 
     
     override func viewDidLoad() {
@@ -69,10 +71,10 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
         bg.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         
         view.addSubview(listTable)
-        listTable.leftAnchor.constraint(equalTo: bg.leftAnchor, constant: 8).isActive = true
-        listTable.topAnchor.constraint(equalTo: bg.topAnchor, constant: 8).isActive = true
-        listTable.bottomAnchor.constraint(equalTo: bg.bottomAnchor, constant: -8).isActive = true
-        listTable.rightAnchor.constraint(equalTo: bg.rightAnchor, constant: -8).isActive = true
+        listTable.leftAnchor.constraint(equalTo: bg.leftAnchor, constant: tbInset).isActive = true
+        listTable.topAnchor.constraint(equalTo: bg.topAnchor, constant: tbInset).isActive = true
+        listTable.bottomAnchor.constraint(equalTo: bg.bottomAnchor, constant: -tbInset).isActive = true
+        listTable.rightAnchor.constraint(equalTo: bg.rightAnchor, constant: -tbInset).isActive = true
         
         view.addSubview(popup)
         popup.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -113,7 +115,7 @@ extension ListController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 42
     }
     
 }
