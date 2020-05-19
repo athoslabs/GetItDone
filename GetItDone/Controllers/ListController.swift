@@ -45,6 +45,13 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
         
     }
     
+    func updateHeaderItemsLeft() {
+        header.itemsLeft = 0
+        self.listData.forEach { (toDo) in
+            if !toDo.status { header.itemsLeft += 1 }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,6 +60,8 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
             ToDo(id: 1, title: "Yo Dude", status: true),
             ToDo(id: 2, title: "Third Item", status: false)
         ]
+        
+        self.updateHeaderItemsLeft()
         
         view.backgroundColor = .white
         
@@ -118,6 +127,7 @@ extension ListController: UITableViewDelegate, UITableViewDataSource, GDListCell
         }
         self.listData = newListData
         self.listTable.reloadData()
+        self.updateHeaderItemsLeft()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

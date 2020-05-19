@@ -17,6 +17,12 @@ class GDHeaderView: UIView {
     
     var delegate: GDHeaderDelegate?
     
+    var itemsLeft: Int = 0 {
+        didSet {
+            self.subtitleLabel.text = "\(itemsLeft) left"
+        }
+    }
+    
     init(frame: CGRect = .zero, title: String = "Header Title", subtitle: String = "Header Subtitle") {
         super.init(frame: frame)
         
