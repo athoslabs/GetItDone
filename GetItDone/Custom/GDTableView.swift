@@ -14,7 +14,6 @@ class GDTableView: UITableView {
         checkIfAutoLayout()
         backgroundColor = .clear
         separatorStyle = .none
-        
     }
     
     required init?(coder: NSCoder) {

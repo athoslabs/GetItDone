@@ -30,7 +30,6 @@ class GDGradient: UIView {
             layer.colors = self.hexColors
             layer.locations = [0.0, 1.2]
         }
-        
     }
     
     override class var layerClass: AnyClass {

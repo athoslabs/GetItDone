@@ -45,8 +45,6 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
         
     }
     
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -89,11 +87,14 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
         listTable.dataSource = self
         listTable.register(GDListCell.self, forCellReuseIdentifier: CELL_ID)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 }
 
 extension ListController: UITextFieldDelegate {
 
-    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         popup.animateView(transform: CGAffineTransform(translationX: 0, y: -keyboardHeight), duration: 0.50)
     }
@@ -104,22 +105,23 @@ extension ListController: UITextFieldDelegate {
 }
 
 extension ListController: UITableViewDelegate, UITableViewDataSource, GDListCellDelegate {
-    
-    func toggleToDo(id: Int, status: Bool) {
-        let newListData = self.listData.map { (toDo) -> ToDo in
-            if toDo.id == id {
-                var newToDo = toDo
-                newToDo.status = status
+
+    func toggleToDo(toDo updatedToDo: ToDo) {
+        let newListData = self.listData.map { (oldToDo) -> ToDo in
+            if oldToDo.id == updatedToDo.id {
+                var newToDo = oldToDo
+                newToDo.status = updatedToDo.status
+                newToDo.title = updatedToDo.title
                 return newToDo
             }
-            return toDo
+            return oldToDo
         }
         self.listData = newListData
         self.listTable.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        return 2
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -159,7 +161,7 @@ extension ListController: UITableViewDelegate, UITableViewDataSource, GDListCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! GDListCell
         
-        cell.box.delegate = self
+        cell.delegate = self
         var itemsForSection: [ToDo] = []
         self.listData.forEach { (toDo) in
             if indexPath.section == 0 && !toDo.status {

@@ -16,6 +16,7 @@ class GDLabel: UILabel {
         if frame == .zero {
             self.translatesAutoresizingMaskIntoConstraints = false
         }
+        
         self.text = title
         self.textColor = color
         self.font = UIFont.init(name: "Raleway-Regular", size: size)
