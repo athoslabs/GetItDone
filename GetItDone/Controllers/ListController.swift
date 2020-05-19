@@ -9,12 +9,33 @@
 import UIKit
 
 class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
+    
+    var popupLocation: CGFloat = -70
+    
     func openAddItemPopUp() {
-        print("Trying to open add item View")
+        popup.animatePopUp()
+    }
+    
+    func notInList(text: String) -> Bool {
+        var isNotInList = true
+        self.listData.forEach { (toDo) in
+            if toDo.title == text {
+                isNotInList = false
+            }
+        }
+        return isNotInList
     }
     
     func addItemToList(text: String) {
-        print("Text in field is \(text)")
+        if (notInList(text: text)) {
+            let newItem = ToDo(id: self.listData.count, title: text, status: false)
+            self.listData.append(newItem)
+            self.listTable.reloadData()
+            self.updateHeaderItemsLeft()
+            self.popup.textField.text = ""
+            self.popup.animatePopUp()
+        }
+
     }
     
     let header = GDHeaderView(title: "Stuff to get done", subtitle: "4 Left")
@@ -84,7 +105,7 @@ class ListController: UIViewController, GDHeaderDelegate, GDNewItemDelegate {
         listTable.rightAnchor.constraint(equalTo: bg.rightAnchor, constant: -tbInset).isActive = true
         
         view.addSubview(popup)
-        popup.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        popup.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 70).isActive = true
         popup.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         popup.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         popup.heightAnchor.constraint(equalToConstant: 80).isActive = true

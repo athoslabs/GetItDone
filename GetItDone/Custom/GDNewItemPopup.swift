@@ -16,8 +16,22 @@ class GDNewItemPopup: GDGradient {
     var delegate: GDNewItemDelegate?
     
     @objc func handleCancel() {
-        textField.resignFirstResponder()
+        animatePopUp()
     }
+    
+    var popupLocation: CGFloat = -70
+    
+    @objc func animatePopUp() {
+        self.animateView(transform: CGAffineTransform(translationX: 0.0, y: popupLocation), duration: 0.3)
+        if popupLocation == -70 {
+            popupLocation = 0
+            textField.resignFirstResponder()
+        } else {
+            popupLocation = -70
+            textField.resignFirstResponder()
+        }
+    }
+
     
     @objc func handleAdd() {
         if let delegate = self.delegate, let textFieldText = self.textField.text {
@@ -28,9 +42,12 @@ class GDNewItemPopup: GDGradient {
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.animatePopUp)))
+        
         let inset: CGFloat = 12
         
         self.layer.cornerRadius = 16
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         addSubview(cancelButton)
         cancelButton.leftAnchor.constraint(equalTo: leftAnchor, constant: inset).isActive = true
